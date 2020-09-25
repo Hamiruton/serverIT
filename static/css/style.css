@@ -1,0 +1,54 @@
+#body {
+	position: relative;
+}
+
+#form_signup {
+    position: relative;
+    top: 23%;
+    width: 700px;
+    margin: auto;
+}
+
+#submit_signup {
+    width: 150px;
+    margin-left: 250px;
+}
+
+.links:hover {
+    text-decoration: underline;
+    color: #F00;
+}
+
+#message {
+	position: relative;
+}
+
+@media all and (max-width: 1024px) {
+	#form_signup {
+	    position: relative;
+	    top: 23%;
+	    width: 450px;
+	    height: 400px;
+	    overflow: scroll;
+	    margin: auto;
+	}
+
+	#submit_signup {
+	    width: 150px;
+	    margin-left: 120px;
+	}
+}
+
+/*^SignUp.ejs^*/
+
+#form_login {
+	position: relative;
+    top: 23%;
+    width: 400px;
+    margin: auto;
+}
+
+#submit_login {
+    width: 150px;
+    margin-left: 100px;
+}

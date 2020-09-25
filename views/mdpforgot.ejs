@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+    <div class="ui raised segment" id="form_login">
+        <% if (danger) { %>
+            <div class="ui warning message" id="message">
+                <div class="ui header">
+                    <p style="text-align: center;"> <%= danger%> </p>
+                </div>
+            </div>
+        <% } %>
+        <form action="/mdpforgot" method="post" class="ui form">
+            <h1 class="ui header" style="text-align: center;">Forget Password</h1>
+            <div class="field">
+                <div class="ui left icon input">
+                    <input type="email" name="email" id="email" autocomplete="email" required placeholder="Email">
+                    <i class="mail icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <button type="submit" class="ui teal button" id="submit_login">Sign up</button>
+            </div>
+        </form>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+    <script>
+    </script>
+</body>
+</html>
