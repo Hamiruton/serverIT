@@ -43,10 +43,10 @@ router.post('/valid', async (req, res)=>{
 });
 
 router.get('/signup/:confirm_signup_link', (req, res)=>{
-	token.verify_signup(req.params.confirm_signup_link, (data, error)=>{
+	token.verify_signup(req.params.confirm_signup_link, (error, data)=>{
 		if (error) {
 			console.error(error);
-			return res.send('ça passe pas');
+			res.send('ça passe pas');
 		} else if (data) {
 			Data.modify_confirm_email(data, ()=>{
 				res.redirect(301, '/login');
