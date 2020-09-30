@@ -2,7 +2,6 @@ const router = require('express').Router();
 const Data = require('../models/data');
 const token = require('../tools/token');
 const sendmail = require('../tools/mail');
-const { PassThrough } = require('nodemailer/lib/xoauth2');
 
 router.get('/mdpforgot', (req, res)=>{
     if (req.session.unfound_psw) {
@@ -15,13 +14,15 @@ router.post('/mdpforgot', (req, res)=>{
     const {email} = req.body;
     Data.get_email(email, (value_callback)=>{
         if (value_callback) {
-            req.session.destroy(err=>{
-                if (err) {console.error(err);}
+            try {
                 token.confirm_signup(email, (token_confirm_signup)=>{
                     sendmail(email, token_confirm_signup);
+                    req.session.unfound_psw = '';
                     res.redirect(301, '/mdpforgot');
                 });
-            });
+            } catch (err) {
+                console.error(err);
+            }
         } else {
             // l'adresse mail n'est pas dans la BD
             req.session.unfound_psw = "Retry, Email not found";
@@ -31,18 +32,13 @@ router.post('/mdpforgot', (req, res)=>{
 });
 
 router.get('/mdpforgot/:token_mdp', (req, res)=>{
-    token.verify_signup(token_mdp, (err)=>{
-        if (err) {
-            console.error(err);
-            return res.send('ça passe pas');
-            // Ici, le lien entré n'est pas le bon: Page d'erreur
-        }
-        res.send('Ça marche');
-        // Détaillons ce que nous allons juste ici:
-        // 1- Créer une page où le user loggera son new mdp et le retype
-        // 2- Recevoir ses données et les vérifier à travers joi
-        // 3- Crypter le mdp avec bcrypt et insérer le mdp crypté dans la BD
-        // 4- Rediriger vers la page login
+    token.verify_signup(req.params.token_mdp).then(data =>{
+        req.session.token_email = data;
+        console.log(req.session.token_email);
+        res.redirect(301, '/changemdp');
+    }).catch(error =>{
+        console.error(error);
+        return res.send('Ça passe pas');
     });
 });
 

@@ -76,6 +76,20 @@ class Data {
         });
     }
 
+    static change_psw(new_psw, token_email) {
+        let sql = `UPDATE data SET password = ? WHERE email = ?`;
+        let insert = [new_psw, token_email];
+        return new Promise ((resolve, reject)=>{
+            con.query(sql, insert, (err, results)=>{
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
 }
 
 module.exports = Data;

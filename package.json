@@ -1,6 +1,6 @@
 {
   "name": "serverit",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Petit projet pour appliquer mes connaissances en NodeJS, Semantic UI, CSS et JS",
   "main": "server.js",
   "scripts": {

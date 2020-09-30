@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { resolveContent } = require('nodemailer/lib/shared');
 
 function confirm_signup (data, cb) {
     const token_confirm_signup = jwt.sign({
@@ -8,13 +9,15 @@ function confirm_signup (data, cb) {
     cb(token_confirm_signup);
 }
 
-async function verify_signup(token, cb) {
-    try {
-        let data = await jwt.verify(token, 'iloveyou2002').data;
-        cb(data);
-    } catch (error) {
-        cb(error);
-    }
+function verify_signup(token) {
+    return new Promise((resolve, reject)=>{
+        try {
+            jwt.verify(token, 'iloveyou2002');
+            resolve(jwt.verify(token, 'iloveyou2002').data);
+        } catch (error) {
+            reject(error);
+        }
+    });
 }
 
 module.exports = {

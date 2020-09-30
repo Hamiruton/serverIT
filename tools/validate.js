@@ -19,7 +19,13 @@ const login_schema = Joi.object({
 	password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9çéèêëïîÉÈÊËÎÏ_@#-]+$')).required()
 });
 
+const changepsw_schema = Joi.object({
+	psw: Joi.string().pattern(new RegExp('^[a-zA-Z0-9çéèêëïîÉÈÊËÎÏ_@#-]+$')).required(),
+	confirm_psw: Joi.ref('psw')
+});
+
 module.exports = {
 	signup_schema: signup_schema,
-	login_schema: login_schema
+	login_schema: login_schema,
+	changepsw_schema: changepsw_schema
 };
