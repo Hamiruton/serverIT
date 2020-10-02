@@ -1,17 +1,16 @@
-// Gérer mes infos sensibles avec des variables d'environnement
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'lewisahoumouan@gmail.com',
-        pass: '*****************' // Entrer mon mdp plus tard
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
     }
 });
 
 function sendmail(email, lien) {
     let mailOptions = {
-        from: 'lewisahoumouan@gmail.com',
+        from: process.env.EMAIL_USER,
         to: email,
         subject: 'Sign up confirmation',
         html: 
