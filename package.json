@@ -4,6 +4,7 @@
   "description": "Petit projet pour appliquer mes connaissances en NodeJS, Semantic UI, CSS et JS",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon -r dotenv/config server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Akuseru",
