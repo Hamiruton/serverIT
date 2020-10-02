@@ -16,15 +16,17 @@ let httpServer = http.createServer(app);
 //Routes
 let signup = require('./routes/signup');
 let login = require('./routes/login');
-let sql = require('./models/con');
 let mdpforgot = require('./routes/mdpforgot');
 let changemdp = require('./routes/changemdp');
+let homepage = require('./routes/homepage');
 app.use(signup);
 app.use(login);
 app.use(mdpforgot);
 app.use(changemdp);
+app.use(homepage);
 
 // Listen on port 5000
-httpServer.listen(5000, ()=>{
-    console.log('Server starting on port 5000');
+const port = process.env.PORT
+httpServer.listen(port, ()=>{
+    console.log(`Server starting on port ${port}`);
 });
