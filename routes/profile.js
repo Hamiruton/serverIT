@@ -3,9 +3,11 @@ const Data = require('../models/data');
 
 router.get('/profile', (req, res)=>{
     if (req.session.keys_data) {
-        return res.render('profile', {failed_deleted: ''});
+        let usrname = req.session.keys_data['username'];
+        let matricule = req.session.keys_data['matricule'];
+        return res.render('profile', {failed_deleted: '', username:usrname, matricule:matricule});
     } else if (req.session.failed_deleted) {
-        return res.render('profile', {failed_deleted: req.session.failed_deleted});
+        return res.render('profile', {failed_deleted: req.session.failed_deleted, username:usrname, matricule:matricule});
     }
     res.redirect(301, '/login');
 });
