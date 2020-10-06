@@ -37,9 +37,12 @@
 	    width: 150px;
 	    margin-left: 120px;
 	}
-}
 
-/*^SignUp.ejs^*/
+	/*User Session*/
+	.card {
+		margin: 0px;
+	}
+}
 
 #form_login {
 	position: relative;
@@ -51,4 +54,16 @@
 #submit_login {
     width: 150px;
     margin-left: 100px;
+}
+
+.title {
+	position: relative;
+	font-size: 50px;
+	font-weight: bold;
+	color: teal;
+	margin: auto;
+}
+
+.card {
+	margin: 20px;
 }

@@ -28,29 +28,31 @@ class Data {
         });
     }
 
-    static login(usr, mat, psw, cb) {
+    static login(usr, mat, psw) {
         let sql = `SELECT * FROM data WHERE username = ? AND matricule = ? AND confirm_email = true`;
         let insert = [usr, mat];
-        // Valeur de retour indiquant si l'une des données entrées est dans la BD
         let value_callback = false;
-
-        con.query(sql, insert, (err, results)=>{
-            if (err) {
-                return console.error(err);
-            }
-            if(results[0]) {
-                bcrypt.compare(psw, results[0].password, (err, res)=>{
-                    if (err) throw err;
-                    if (res) {
-                        value_callback = true;
-                        cb(value_callback);
-                    } else {
-                        cb(value_callback);
-                    }
-                });
-            } else {
-                cb(value_callback);
-            }
+        // Valeur de retour indiquant si l'une des données entrées est dans la BD
+        return new Promise((resolve, reject)=>{
+            con.query(sql, insert, (err, results)=>{
+                //
+                if (err) {
+                    reject(err);
+                }
+                if(results[0]) {
+                    bcrypt.compare(psw, results[0].password, (err, res)=>{
+                        if (err) throw err;
+                        if (res) {
+                            resolve();
+                        } else {
+                            reject(value_callback);
+                        }
+                    });
+                } else {
+                    reject(value_callback);
+                }
+                //
+            });
         });
     }
 
@@ -85,6 +87,19 @@ class Data {
                     reject(err);
                 } else {
                     resolve(results);
+                }
+            });
+        });
+    }
+
+    static delete_account(username) {
+        let sql = `DELETE FROM data WHERE username = ?`;
+        return new Promise((resolve, reject)=>{
+            con.query(sql, [username], (err, results)=>{
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
                 }
             });
         });

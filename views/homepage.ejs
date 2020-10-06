@@ -7,16 +7,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 </head>
 <body>
+    <!-- HEADER-->
     <div class="ui secondary menu">
+        <span class="title">serveur IT7</span>
         <div class="right item">
-            <div class="ui circle avatar image">
-                <img src="/static/images/elliot.jpg" alt="Profile Photo">
+            <div class="ui dropdown item">
+                <img class="ui avatar image" src="/images/elliot.jpg" alt="Profile Photo">
+                <span>Username</span>
+                <div class="menu">
+                    <a class="item" href="/profile">Profile</a>
+                    <a class="item" href="/logout">Log out</a>
+                </div>
             </div>
-            <span>Name</span>
         </div>
     </div>
 
+    <!--BODY-->
+    <div class="ui equal width stackable internally celled grid">
+        <div class="ui cards">
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="center">
+                            <div class="ui inverted button">
+                                Mathématiques
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/images/elliot.jpg" alt="">
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="center">
+                            <div class="ui inverted button">
+                                Physiques
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/images/elliot.jpg" alt="">
+                </div>
+            </div>
+    
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="center">
+                            <div class="ui inverted button">
+                                Anglais
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/images/elliot.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+        $('document').ready(()=>{
+            $('.dropdown.item').dropdown({
+                on: 'click'
+            });
+
+            $('.dimmable.image').dimmer({
+                on: 'hover'
+            });
+        });
+    </script>
 </body>
 </html>

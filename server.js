@@ -27,11 +27,15 @@ let login = require('./routes/login');
 let mdpforgot = require('./routes/mdpforgot');
 let changemdp = require('./routes/changemdp');
 let homepage = require('./routes/homepage');
+let logout = require('./routes/logout');
+let profile = require('./routes/profile');
 app.use(signup);
 app.use(login);
 app.use(mdpforgot);
 app.use(changemdp);
 app.use(homepage);
+app.use(logout);
+app.use(profile);
 
 // Listen on port 5000
 let port = process.env.PORT;

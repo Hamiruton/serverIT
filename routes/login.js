@@ -12,21 +12,15 @@ router.get('/login', (req, res)=>{
 router.post('/login', async (req, res)=>{
 	try {
 		const value = await schema.validateAsync(req.body);
-		//Vérifier si les infos entrées existent dans la BD
-		//Si oui, rediriger le user vers sa page d'accueil
-		//Sinon, le ramener sur la page login
-		req.session.destroy(e =>{
-			if (e) {console.error(e);}
-			Data.login(value.username, value.matricule, value.password, (value_callback)=>{
-				if (value_callback){
-					res.send('Données affichées');
-					//res.redirect(301, '/');
-				} else {
-					//res.send('Données non retrouvées');
-					res.redirect(301, '/login');
-				}
-			});
-		})
+		req.session.message = '';
+		Data.login(value.username, value.matricule, value.password).then(() =>{
+			req.session.keys_data = value;
+			res.redirect(301, '/');
+		}).catch((err, value_callback)=>{
+			console.error(err, value_callback);
+			req.session.message = 'Check again your informations';
+			res.redirect(301, '/login');
+		});
 	} catch (err) {
 		req.session.message = 'Check again your informations';
 		console.error(err);
