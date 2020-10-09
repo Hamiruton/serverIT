@@ -18,6 +18,7 @@ app.use(session({
 }))
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, 'static')));
+app.use('/sujet', express.static(path.join(__dirname, 'static', 'corros')));
 
 let httpServer = http.createServer(app);
 
@@ -40,5 +41,5 @@ app.use(profile);
 // Listen on port 5000
 let port = process.env.PORT;
 httpServer.listen(port, ()=>{
-    console.log('Server starting on port 5000');
+    console.log(`Server starting on port ${port}`);
 });

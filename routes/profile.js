@@ -12,7 +12,7 @@ router.get('/profile', (req, res)=>{
     res.redirect(301, '/login');
 });
 
-router.post('/profile/delete', (req, res)=>{
+router.get('/profile/delete', (req, res)=>{
     let username = req.session.keys_data['username'];
     Data.delete_account(username).then(()=>{
         req.session.destroy(()=>{
