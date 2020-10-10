@@ -1,5 +1,6 @@
 const con = require('./con');
 const bcrypt = require('bcrypt');
+const { resolveContent } = require('nodemailer/lib/shared');
 
 class Data {
     constructor(value) {
@@ -107,4 +108,43 @@ class Data {
 
 }
 
-module.exports = Data;
+class Corro {
+    constructor(corro_name, matiere) {
+        this.corro_name = corro_name;
+        this.matiere = matiere;
+    }
+
+    register_corro() {
+        let sql = `INSERT INTO corros(corro_name, matieres, register_date) VALUES(?,?,?)`;
+        let insert = [this.corro_name, this.matiere, new Date()];
+        return new Promise((resolve, reject)=>{
+            con.query(sql, insert, (err,results)=>{
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
+        });
+    }
+
+    static get_corro(matiere) {
+        let sql = `SELECT name WHERE matieres = ?`;
+        return new Promise((resolve, reject)=>{
+            con.query(sql, [matiere], (err, results)=>{
+                if (err) {
+                    reject(err);
+                } else if(results[0]) {
+                    const array_names = results[0];
+                    resolve(array_names);
+                }
+            });
+        });
+    }
+
+}
+
+module.exports = {
+    Data: Data,
+    Corro: Corro
+};

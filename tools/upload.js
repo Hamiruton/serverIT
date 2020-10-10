@@ -9,13 +9,14 @@ const upload = (req, directory) =>{
             if (err) {
                 reject(err);
             }
+            let name = files.fileupload.name;
             let oldpath = files.fileupload.path;
-            let newpath = path.join(__dirname, directory, files.fileupload.name);
+            let newpath = path.join(__dirname, 'static', 'corros', directory, name);
             fs.rename(oldpath, newpath, err=>{
                 if (err) {
                     reject(err);
                 }
-                resolve();
+                resolve(name);
             });
         });
     });

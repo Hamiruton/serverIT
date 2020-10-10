@@ -48,7 +48,7 @@
             </div>
         </div>
         <% if (danger) { %>
-            <div class="ui warning message" id="message">
+            <div class="ui red message" id="message">
                 <i class="close icon"></i>
                 <div class="header">
                     <%= danger %>
@@ -74,7 +74,7 @@
         let info_para = document.getElementById('para');
 
         btn.addEventListener('click', (e)=>{
-            mess_div.className = 'ui warning message';
+            mess_div.className = 'ui red message';
             invalid_syntax(e);
         });
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+    <div class="ui raised segment" id="form_login">
+        <form class="ui form" action="/upload" method="post" enctype="multipart/form-data">
+            <h1 class="ui dividing header">Upload Corros</h1>
+            <div class="field">
+                <div class="ui input">
+                    <input type="file" name="file" id="file" required>
+                </div>
+            </div>
+            <div class="field">
+                <select name="matiere" id="matiere" class="ui dropdown">
+                    <option value="">Matières</option>
+                    <option value="anglais">Anglais</option>
+                    <option value="mathematiques">Mathématiques</option>
+                    <option value="physiques">Physiques</option>
+                </select>
+            </div>
+            <center>
+                <div class="field">
+                    <button class="ui teal button" type="submit">Upload</button>
+                </div>
+            </center>
+            <div class="ui divider"></div>
+            <div class="ui yellow message">
+                <div class="header">
+                    <p>
+                        <i class="warning icon"></i>
+                        Seul les fichiers PDF sont acceptés
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script>
+        $('document').ready(()=>{
+            $('.dropdown').dropdown();
+        });
+    </script>
+</body>
+</html>

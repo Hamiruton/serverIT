@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const saltRounds = 10; 
 const schema = require('../tools/validate').signup_schema;
-const Data = require('../models/data');
+const Data = require('../models/data').Data;
 const token = require('../tools/token');
 const sendmail = require('../tools/mail');
 

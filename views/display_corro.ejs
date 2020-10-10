@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+</head>
+<body>
+    <ul>
+        <% for (let val = 0; val < array_names.length; val++) { %>
+            <li><a href="/sujet/<%= array_names[val] %>"><%= array_names[val] %></a></li>
+        <% } %>
+    </ul>
+</body>
+</html>

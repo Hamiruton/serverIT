@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Data = require('../models/data');
+const Data = require('../models/data').Data;
 const token = require('../tools/token');
 const sendmail = require('../tools/mail');
 

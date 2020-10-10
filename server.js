@@ -30,6 +30,8 @@ let changemdp = require('./routes/changemdp');
 let homepage = require('./routes/homepage');
 let logout = require('./routes/logout');
 let profile = require('./routes/profile');
+let upload_corros = require('./routes/upload_corros');
+let display_corro = require('./routes/display_corro');
 app.use(signup);
 app.use(login);
 app.use(mdpforgot);
@@ -37,6 +39,8 @@ app.use(changemdp);
 app.use(homepage);
 app.use(logout);
 app.use(profile);
+app.use(upload_corros);
+app.use(display_corro);
 
 // Listen on port 5000
 let port = process.env.PORT;

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Data = require('../models/data');
+const Data = require('../models/data').Data;
 
 router.get('/profile', (req, res)=>{
     if (req.session.keys_data) {

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const schema = require('../tools/validate').login_schema;
-const Data = require('../models/data');
+const Data = require('../models/data').Data;
 
 router.get('/login', (req, res)=>{
 	if (req.session.message) {

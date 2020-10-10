@@ -2,7 +2,7 @@ const router = require('express').Router();
 const schema = require('../tools/validate').changepsw_schema;
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const Data = require('../models/data');
+const Data = require('../models/data').Data;
 
 router.get('/changemdp', (req, res)=>{
     if (req.session.message) {
