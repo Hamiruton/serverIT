@@ -10,7 +10,7 @@
 <body>
     <ul>
         <% for (let val = 0; val < array_names.length; val++) { %>
-            <li><a href="/sujet/<%= array_names[val] %>"><%= array_names[val] %></a></li>
+            <li><a href="/sujet/<%= dir %>/<%= array_names[val] %>"><%= array_names[val] %></a></li>
         <% } %>
     </ul>
 </body>
